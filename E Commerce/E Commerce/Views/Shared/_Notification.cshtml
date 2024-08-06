@@ -1,0 +1,36 @@
+﻿@* Views/Shared/_Notification.cshtml *@
+@{
+    var messageType = ViewBag.MessageType as string ?? "success";
+    var iconClass = messageType == "error" ? "fas fa-exclamation-circle" : "fas fa-check-circle";
+    var message = ViewBag.ToasterMessage as string ?? "";
+}
+<div id="toaster" class="toaster @messageType">
+    <div class="toaster-content">
+        <i class="@iconClass"></i>
+        <span>@message</span>
+    </div>
+    <div class="progress-bar"></div>
+</div>
+
+<script>
+    function showToaster() {
+        var toaster = document.getElementById('toaster');
+        var progressBar = toaster.querySelector('.progress-bar');
+        if (toaster.innerText.trim() !== "") {
+            toaster.style.display = 'block';
+            toaster.style.animation = 'slideIn 0.5s forwards';
+
+            progressBar.style.transform = 'scaleX(1)';
+
+            setTimeout(() => {
+                toaster.style.animation = 'fadeOut 0.5s forwards';
+                setTimeout(() => {
+                    toaster.style.display = 'none';
+                    progressBar.style.transform = 'scaleX(0)';
+                }, 500);
+            }, 5000);
+        }
+    }
+
+    window.onload = showToaster;
+</script>

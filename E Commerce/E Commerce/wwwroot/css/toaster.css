@@ -1,0 +1,78 @@
+﻿/* wwwroot/css/toaster.css */
+
+.toaster {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 350px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+    .toaster.success {
+        border-left: 4px solid #28a745;
+    }
+
+    .toaster.error {
+        border-left: 4px solid #dc3545;
+    }
+
+.toaster-content {
+    display: flex;
+    align-items: center;
+}
+
+    .toaster-content i {
+        margin-right: 12px;
+        font-size: 20px;
+    }
+
+.toaster.success i {
+    color: #28a745;
+}
+
+.toaster.error i {
+    color: #dc3545;
+}
+
+.progress-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #4CAF50;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 5s linear;
+}
+
+.toaster.error .progress-bar {
+    background-color: #dc3545;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
